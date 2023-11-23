@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -11,13 +9,16 @@ public class Main {
         firstMovie.setDebutYear(2022);
         ;
         firstMovie.setPlanIncluded(false);
-        ArrayList<Double> movieNotes = new ArrayList<Double>();
+        
         double averageNote = 0;
         double sum = 0;
-        movieNotes.add(8.1);
-        movieNotes.add(6.3);
-        movieNotes.add(9.3);
-        movieNotes.add(8.5);
+
+        firstMovie.rateTitle(10);
+        firstMovie.rateTitle(5);
+        firstMovie.rateTitle(6);
+     
+
+        System.out.println(firstMovie.movieNotes);
 
         // movieNotes.forEach(note -> {
         // System.out.println(note);
@@ -29,10 +30,10 @@ public class Main {
 
         firstMovie.planNotification();
 
-        for (double nota : movieNotes) {
+        for (double nota : firstMovie.movieNotes) {
             if (nota > 0) {
                 sum += nota;
-                averageNote = sum / movieNotes.size();
+                averageNote = sum / firstMovie.movieNotes.size();
             } else {
                 System.out.println("Erro");
             }

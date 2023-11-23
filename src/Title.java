@@ -6,10 +6,10 @@ public class Title {
     private int debutYear;
     private boolean planIncluded;
     private double review;
-    private double reviewNoteSum;
+    public double reviewNoteSum;
     private int totalReviews;
     private int durationInMinutes;
-    private ArrayList<Double> movieNotes = new ArrayList<Double>();
+    ArrayList<Double> movieNotes = new ArrayList<Double>();
 
     public Title(
             String name,
@@ -100,9 +100,9 @@ public class Title {
         }
     }
 
-    void rateTitle(double note) {
+    ArrayList<Double> rateTitle(double note) {
         movieNotes.add(note);
-        reviewNoteSum += note;
-        totalReviews++;
+        return movieNotes;
+        
     }
 }
