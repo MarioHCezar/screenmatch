@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -18,27 +20,27 @@ public class Main {
         firstMovie.rateTitle(6);
      
 
-        System.out.println(firstMovie.movieNotes);
-
+        
         // movieNotes.forEach(note -> {
-        // System.out.println(note);
-        // });
-
-        System.out.println("Esse é o Screen Match");
-
-        firstMovie.showCredits();
-
-        firstMovie.planNotification();
-
-        for (double nota : firstMovie.movieNotes) {
-            if (nota > 0) {
-                sum += nota;
-                averageNote = sum / firstMovie.movieNotes.size();
-            } else {
-                System.out.println("Erro");
+            // System.out.println(note);
+            // });
+            
+            System.out.println("Esse é o Screen Match");
+            
+            firstMovie.showCredits();
+            
+            firstMovie.planNotification();
+            
+            for (double nota : firstMovie.movieNotes) {
+                if (nota > 0) {
+                    sum += nota;
+                    averageNote = sum / firstMovie.movieNotes.size();
+                } else {
+                    System.out.println("Erro");
+                }
             }
+            
+            System.out.printf("Nota do filme: %.1f %n", averageNote);
+            System.out.printf("Array de notas: %s%n", (firstMovie.movieNotes).toString());
         }
-
-        System.out.printf("Nota do filme: %.1f %n", averageNote);
-    }
 }
