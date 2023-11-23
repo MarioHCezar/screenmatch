@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Title {
     private String name;
@@ -48,7 +49,15 @@ public class Title {
     }
 
     public void setDebutYear(int debutYear) {
-        this.debutYear = debutYear;
+        // Date thisYear = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.get(Calendar.YEAR);
+        if (debutYear > 1800 && debutYear < cal.get(Calendar.YEAR)) {
+
+            this.debutYear = debutYear;
+        } else {
+            System.out.println("Ano incorreto");
+        }
     }
 
     public int getDebutYear() {
@@ -103,6 +112,6 @@ public class Title {
     ArrayList<Double> rateTitle(double note) {
         movieNotes.add(note);
         return movieNotes;
-        
+
     }
 }
