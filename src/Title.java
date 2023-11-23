@@ -1,11 +1,15 @@
+import java.util.ArrayList;
+
 public class Title {
     private String name;
     private String planCategory;
     private int debutYear;
     private boolean planIncluded;
     private double review;
+    private double reviewNoteSum;
     private int totalReviews;
     private int durationInMinutes;
+    private ArrayList<Double> movieNotes = new ArrayList<Double>();
 
     public Title(
             String name,
@@ -13,13 +17,16 @@ public class Title {
             int debutYear,
             boolean planIncluded,
             double review,
+            double reviewNoteSum,
             int totalReviews,
-            int durationInMinutes) {
+            int durationInMinutes,
+            ArrayList<Double> movieNotes) {
         this.name = name;
         this.planCategory = planCategory;
         this.debutYear = debutYear;
         this.planIncluded = planIncluded;
         this.review = review;
+        this.reviewNoteSum = reviewNoteSum;
         this.totalReviews = totalReviews;
         this.durationInMinutes = durationInMinutes;
     }
@@ -78,5 +85,24 @@ public class Title {
 
     public int getDurationInMinutes() {
         return durationInMinutes;
+    }
+
+    void showCredits() {
+        System.out.println("Filme: " + getName());
+        System.out.println("Ano de lançamento: " + getDebutYear());
+    }
+
+    void planNotification() {
+        if (getPlanIncluded() || getPlanCategory().equals("Plus")) {
+            System.out.println("Filme disponível em seu plano");
+        } else {
+            System.out.println("Filme não disponível em seu plano. Faça o upgrade");
+        }
+    }
+
+    void rateTitle(double note) {
+        movieNotes.add(note);
+        reviewNoteSum += note;
+        totalReviews++;
     }
 }
