@@ -1,3 +1,5 @@
+package com.screenmatch.models;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -10,7 +12,7 @@ public class Title {
     public double reviewNoteSum;
     private int totalReviews;
     private int durationInMinutes;
-    ArrayList<Double> movieNotes = new ArrayList<Double>();
+    private ArrayList<Double> movieNotes = new ArrayList<Double>();
 
     public Title(
             String name,
@@ -49,10 +51,9 @@ public class Title {
     }
 
     public void setDebutYear(int debutYear) {
-        // Date thisYear = new Date();
         Calendar cal = Calendar.getInstance();
         cal.get(Calendar.YEAR);
-        if (debutYear > 1800 && debutYear < cal.get(Calendar.YEAR)) {
+        if (debutYear > 1800 && debutYear <= cal.get(Calendar.YEAR)) {
 
             this.debutYear = debutYear;
         } else {
@@ -96,12 +97,20 @@ public class Title {
         return durationInMinutes;
     }
 
-    void showCredits() {
+    public void setMovieNotes(ArrayList<Double> movieNotes) {
+        this.movieNotes = movieNotes;
+    }
+
+    public ArrayList<Double> getMovieNotes() {
+        return movieNotes;
+    }
+
+    public void showCredits() {
         System.out.println("Filme: " + getName());
         System.out.println("Ano de lançamento: " + getDebutYear());
     }
 
-    void planNotification() {
+    public void planNotification() {
         if (getPlanIncluded() || getPlanCategory().equals("Plus")) {
             System.out.println("Filme disponível em seu plano");
         } else {
@@ -109,7 +118,7 @@ public class Title {
         }
     }
 
-    ArrayList<Double> rateTitle(double note) {
+    public ArrayList<Double> rateTitle(double note) {
         movieNotes.add(note);
         return movieNotes;
 
